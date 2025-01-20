@@ -81,8 +81,8 @@
 					// Scrollex.
 						$section.scrollex({
 							mode: 'middle',
-							top: '-20vh',
-							bottom: '-20vh',
+							top: '0vh',
+							bottom: '0vh',
 							initialize: function() {
 
 								// Deactivate section.
@@ -119,10 +119,14 @@
 			offset: function() {
 
 				// If <=large, >small, and sidebar is present, use its height as the offset.
-					if (breakpoints.active('<=large')
-					&&	!breakpoints.active('<=small')
-					&&	$sidebar.length > 0)
-						return $sidebar.height();
+				//	if (breakpoints.active('<=large')
+				//	&&	!breakpoints.active('<=small')
+				//	&&	$sidebar.length > 0)
+				//		return $sidebar.height();
+
+						if (breakpoints.active('<=large') && !breakpoints.active('<=small') && $sidebar.length > 0) {
+							return $sidebar.outerHeight() * 0.5; // Adjust offset as needed
+				
 
 				return 0;
 
@@ -133,8 +137,8 @@
 		$('.spotlights > section')
 			.scrollex({
 				mode: 'middle',
-				top: '-10vh',
-				bottom: '-10vh',
+				top: '10vh',
+				bottom: '10vh',
 				initialize: function() {
 
 					// Deactivate section.
